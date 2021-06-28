@@ -1,5 +1,5 @@
 ##############################################################################################################################
-# script to North American glacial front
+# script to make maps of North American glacial front after the LGM
 # author: Dan MacGuigan
 # dmacguig@buffalo.edu
 ##############################################################################################################################
