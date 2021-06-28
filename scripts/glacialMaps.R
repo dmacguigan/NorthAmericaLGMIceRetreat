@@ -25,18 +25,16 @@ library(rnaturalearth)
 library(rnaturalearthdata)
 library(rnaturalearthhires)
 library(cowplot)
-library(RColorBrewer)
-library(scales)
 library(shades)
 library(gtools)
 library(stringr)
-library(rnaturalearth)
+
 
 ##############################################################################################################################
 # specify the following variables
 ##############################################################################################################################
 
-wd <- "H:/NAGlacialFront" # top level working directory
+wd <- "H:/NAGlacialFront/NorthAmericaLGMIceRetreat" # top level working directory
 glacialShapefileName <- list.files(path=paste(wd, "/data/Dalton_etAl_2020_QuatSci_NAGlaciers/", sep=""), pattern="*.shp")
 glacialShapefileName <- mixedsort(glacialShapefileName) # natural sort files
 glacialTime <- str_remove(sapply(strsplit(glacialShapefileName, "_"), `[`, 1), "ka") # get dates
@@ -54,7 +52,8 @@ setwd(wd)
 # RIVERS
 # load shapefile for all US streams at 1:10 million scale
 # data from https://www.naturalearthdata.com/downloads/10m-physical-vectors/
-rivers <- ne_download(scale = 10, type = 'rivers_lake_centerlines', category = 'physical')
+# I modified the below shapefile slightly to fix a problem with the Mississippi River delta
+rivers <- readOGR(paste(wd, "/data/naturalEarthShapefiles/ne_10m_rivers_lake_centerlines_scale_rank.shp", sep=""))
 
 # LAKES
 lakes <- ne_download(scale = 10, type = 'lakes', category = 'physical')
@@ -121,5 +120,5 @@ for(i in 1:length(glacialShapefileName)){
           axis.text.x = element_text(color = "black", size = 10))
   
   # save each individual plot
-  ggsave(paste(wd, "/plots/", glacialTime_file[i], ".png", sep=""), plot=plot_list[[i]], units = "in", dpi=300, height=8, width=8)
+  ggsave(paste(wd, "/plots/uncalibratedDates/", glacialTime_file[i], ".png", sep=""), plot=plot_list[[i]], units = "in", dpi=300, height=8, width=8)
 }
