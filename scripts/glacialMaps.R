@@ -28,6 +28,7 @@ library(cowplot)
 library(shades)
 library(gtools)
 library(stringr)
+library(gdalUtils)
 
 
 ##############################################################################################################################
