@@ -6,3 +6,6 @@ Scripts and data to plot glacial retreat in North America after the Pleistocene 
 
 ## Calibrated radiocarbon dates, bathymetric data in imperial units
 ![Glacial Ice Retreat Calibrated](./plots/calibratedDates_seaLevel_imperial/glacialFrontAnimation_resize.gif)
+
+## Calibrated radiocarbon dates, no bathymetric data
+![Glacial Ice Retreat Calibrated](./plots/calibratedDates/glacialFrontAnimation.gif)
